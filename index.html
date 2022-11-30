@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE HTML>
 
 <html lang="en-US">
@@ -7,12 +5,30 @@
 
 </head>
 <body>
-	<form method="post">
+<div id="items"></div>
+<form>
 
-		<textarea placeholder="Add to list" name="message" class="messageboxindex"></textarea>
+    <textarea placeholder="Add to list" id="additem" name="message" class="messageboxindex"></textarea>
 
-		<input type="submit" value="Submit &raquo;" class="submitbuttonindex" name="submit">
+    <input type="button" id="submit" value="Submit &raquo;" class="submitbuttonindex" name="submit">
 
-	</form>
+</form>
+
+<script type="text/javascript">
+
+    const submitbtn = document.getElementById('submit')
+    const additem = document.getElementById('additem')
+    const container = document.getElementById('items')
+
+    submitbtn.addEventListener('click', function () {
+        const newitem = document.createElement('div')
+        newitem.textContent = additem.value
+        container.appendChild(newitem)
+        console.log(additem.value)
+    })
+
+
+</script>
+
 </body>
 </html>
