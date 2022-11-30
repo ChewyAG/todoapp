@@ -20,11 +20,31 @@
     const additem = document.getElementById('additem')
     const container = document.getElementById('items')
 
+    let localStorageItems = [];
+
+    // Get from local storage
+    localStorageItems = JSON.parse(localStorage.getItem('items'))
+
+    console.log(localStorageItems);
+
+    for (let i = 0; i < localStorageItems.length; i++) {
+
+        const newitem2 = document.createElement('div')
+        newitem2.textContent = localStorageItems[i]
+        container.appendChild(newitem2)
+    }
+
     submitbtn.addEventListener('click', function () {
+
+        // Add to container div
         const newitem = document.createElement('div')
         newitem.textContent = additem.value
         container.appendChild(newitem)
-        console.log(additem.value)
+
+        //
+        localStorageItems.push(additem.value) // Appends the todo item to an array
+        const str = JSON.stringify(localStorageItems) // Convert the array to a string
+        localStorage.setItem('items', str) // Actually save it
     })
 
 
